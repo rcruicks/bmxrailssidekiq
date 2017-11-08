@@ -1,0 +1,13 @@
+---
+applications:
+- name: rdc-us-sidekiq-worker
+  memory: 256M
+  instances: 1
+  buildpack: https://github.com/cloudfoundry/ruby-buildpack.git
+  path: .
+  command: bundle exec sidekiq
+  no-route: true
+  health-check-type: process
+  services:
+  - Redis-Cloud-rdc-dev
+  - ClearDB-Managed-MySQL-Database-rdc-dev
